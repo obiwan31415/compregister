@@ -6,3 +6,9 @@ function validateForm() {
         return false;
     }
 }
+
+$(function() { 
+       $('#btn_send').click( function() { 
+             $('#btn_send').css("background", "red");
+       });
+});

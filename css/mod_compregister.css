@@ -40,15 +40,15 @@ textarea#comment {
 .mandatory:hover {
    background-color: #DFFFAA;
 }
-input#send {
+input#btn_send {
    width: 100%;
    border-top: 1px solid #0c4a00;
    background: #8ed665;
-   background: -webkit-gradient(linear, left top, left bottom, from(#619c3e), to(#8ed665));
+   /*background: -webkit-gradient(linear, left top, left bottom, from(#619c3e), to(#8ed665));
    background: -webkit-linear-gradient(top, #619c3e, #8ed665);
    background: -moz-linear-gradient(top, #619c3e, #8ed665);
    background: -ms-linear-gradient(top, #619c3e, #8ed665);
-   background: -o-linear-gradient(top, #619c3e, #8ed665);
+   background: -o-linear-gradient(top, #619c3e, #8ed665);*/
    padding: 15.5px 31px;
    -webkit-border-radius: 9px;
    -moz-border-radius: 9px;
@@ -63,12 +63,12 @@ input#send {
    text-decoration: none;
    vertical-align: middle;
    }
-input#send:hover {
+input#btn_send:hover {
    border-top-color: #99971d;
    background: #99971d;
    color: #cccccc;
    }
-input#send:active {
+input#btn_send:active {
    border-top-color: #1b435e;
    background: #1b435e;
    }

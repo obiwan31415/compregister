@@ -2,20 +2,22 @@
 defined('_JEXEC') or die('Access denied');
 $doc=JFactory::getDocument();
 $doc->addStyleSheet(JURI::root().'/modules/mod_compregister/css/mod_compregister.css');
+$doc->addScript(JURI::root().'/code/js/jquery-1.11.1.min.js');
 $doc->addScript(JURI::root().'/modules/mod_compregister/js/mod_compregister.js');
+JHTML::_('behavior.formvalidation');
 ?>
 <!-- <img src="<?php echo JURI::root();?>modules/mod_compregister/images/login.jpg" height="" width="100%"> -->
-<form id="compregister" name="compregister" method="POST">
+<form class="form-validate" id="compregister" name="compregister" method="POST">
 	<!-- <div class="mainregbox"> -->
 		<h3 class="compreg">Dane osoby odpowiedzialnej za komputer</h3>
 		
 			<div class="regbox">
 				<label for="firstname">Imię* :</label>
-				<input class="mandatory" type="text" id="firstname" name="firstname" />
+				<input class="required mandatory" type="text" id="firstname" name="firstname" />
 			</div>
 			<div class="regbox">
 				<label for="lastname">Nazwisko* :</label>
-				<input class="mandatory" type="text" id="firstname" name="lastname" />
+				<input class="required mandatory" type="text" id="firstname" name="lastname" />
 			</div>
 			<div class="regbox">
 				<label for="email">Email* :</label>
@@ -64,5 +66,5 @@ $doc->addScript(JURI::root().'/modules/mod_compregister/js/mod_compregister.js')
 	<label for="comment">Uwagi:</label>
 	<textarea id="comment" name="comment" placeholder="Tu wpisz swoje uwagi."></textarea>
 	<?php echo JHtml::_('form.token'); ?>
-	<input id="send" type="submit" id="btn_send" name="btn_send" value="Wyślij" />
+	<input type="submit" id="btn_send" name="btn_send" value="Wyślij" />
 </form>
