@@ -1,0 +1,74 @@
+label {
+	display: block;
+}
+#titlemod {
+	font-size:16px;
+	color:green;
+	display:block;
+}
+/* input#send {
+	width: 100px;
+	height: 50px;
+	border: 5px;
+	border-color: #00A522;
+	background-color: #A5F2C9;
+} */
+/* .mainbox {
+	display: block;
+	padding: 30px;
+} */
+h3.compreg {
+	color: green;
+	padding-top: 20px;
+}
+.regbox {
+	display: inline-table;
+	height: 50px;
+	min-width: 70px;
+	max-width: 75px;
+	margin-right: 15px;
+}
+textarea#comment {
+	width: 98%;
+	height: 100px;
+	font-family: Tahoma, sans-serif;
+	background-color: #E0FBFF;
+}
+.mandatory {
+	background-color: #DFFFDE;
+}
+.mandatory:hover {
+   background-color: #DFFFAA;
+}
+input#send {
+   width: 100%;
+   border-top: 1px solid #0c4a00;
+   background: #8ed665;
+   background: -webkit-gradient(linear, left top, left bottom, from(#619c3e), to(#8ed665));
+   background: -webkit-linear-gradient(top, #619c3e, #8ed665);
+   background: -moz-linear-gradient(top, #619c3e, #8ed665);
+   background: -ms-linear-gradient(top, #619c3e, #8ed665);
+   background: -o-linear-gradient(top, #619c3e, #8ed665);
+   padding: 15.5px 31px;
+   -webkit-border-radius: 9px;
+   -moz-border-radius: 9px;
+   border-radius: 9px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #005c11;
+   font-size: 19px;
+   font-family: Helvetica, sans-serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+input#send:hover {
+   border-top-color: #99971d;
+   background: #99971d;
+   color: #cccccc;
+   }
+input#send:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }

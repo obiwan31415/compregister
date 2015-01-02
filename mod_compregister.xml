@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<extension type="module" version="3.3.6" method="upgrade">
+	<name>Register Computer</name>
+	<author>Rafal Gawlik</author>
+	<version>1.0.0</version>
+	<description>Form to register a new computer.</description>
+	<files>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<filename>mod_compregister.xml</filename>
+		<filename module="mod_compregister">mod_compregister.php</filename>
+		<filename>install.sql</filename>
+		<filename>uninstall.sql</filename>
+		<folder>images</folder>
+		<folder>css</folder>
+		<folder>js</folder>	
+		<folder>tmpl</folder>
+	</files>
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">install.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file charset="utf8" driver="mysql">uninstall.sql</file>
+		</sql>
+	</uninstall>
+	<config>
+		<fields name="params">
+			<fieldset name="email_config" label="Email Sending Config">
+				<field name="sender_name" type="text" label="Sender Name"></field>
+				<field name="sender_email" type="text" label="Sender E-mail"></field>
+				<field name="receiver_email" type="text" label="Receiver E-mail"></field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

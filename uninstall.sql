@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS `#__comp_register`;
