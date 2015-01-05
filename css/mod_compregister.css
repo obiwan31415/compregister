@@ -6,17 +6,6 @@ label {
 	color:green;
 	display:block;
 }
-/* input#send {
-	width: 100px;
-	height: 50px;
-	border: 5px;
-	border-color: #00A522;
-	background-color: #A5F2C9;
-} */
-/* .mainbox {
-	display: block;
-	padding: 30px;
-} */
 h3.compreg {
 	color: green;
 	padding-top: 20px;
@@ -24,51 +13,50 @@ h3.compreg {
 .regbox {
 	display: inline-table;
 	height: 50px;
-	min-width: 70px;
-	max-width: 75px;
+	/*width: 150px;*/
+	min-width:100px;
 	margin-right: 15px;
 }
-textarea#comment {
+input {
+    height: 15px;
+}
+input#email {
+    display: inline-table;
+    height: 15px;
+    /*width: 150px;*/
+    width:100px;
+    margin-right: 15px;
+    clear: left;
+}
+textarea#uwagi {
 	width: 98%;
-	height: 100px;
+	height: 60px;
 	font-family: Tahoma, sans-serif;
-	background-color: #E0FBFF;
-}
-.mandatory {
-	background-color: #DFFFDE;
-}
-.mandatory:hover {
-   background-color: #DFFFAA;
+	/*background-color: #E0FBFF;*/
 }
 input#btn_send {
-   width: 100%;
-   border-top: 1px solid #0c4a00;
-   background: #8ed665;
-   /*background: -webkit-gradient(linear, left top, left bottom, from(#619c3e), to(#8ed665));
-   background: -webkit-linear-gradient(top, #619c3e, #8ed665);
-   background: -moz-linear-gradient(top, #619c3e, #8ed665);
-   background: -ms-linear-gradient(top, #619c3e, #8ed665);
-   background: -o-linear-gradient(top, #619c3e, #8ed665);*/
-   padding: 15.5px 31px;
-   -webkit-border-radius: 9px;
-   -moz-border-radius: 9px;
-   border-radius: 9px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: #005c11;
-   font-size: 19px;
-   font-family: Helvetica, sans-serif;
-   text-decoration: none;
-   vertical-align: middle;
-   }
+    width: 40%;
+    border: 3px solid #005c11;
+    background: #DFFFAA;
+    margin-top: 20px;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 15.5px 31px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    color: #005c11;
+    font-size: 19px;
+    font-family: Helvetica, sans-serif;
+    text-decoration: none;
+    vertical-align: middle;
+}
 input#btn_send:hover {
-   border-top-color: #99971d;
-   background: #99971d;
-   color: #cccccc;
-   }
-input#btn_send:active {
-   border-top-color: #1b435e;
-   background: #1b435e;
-   }
+   background: #00FF00;
+}
+input.invalid {
+    border-color: rgb(185, 74, 72) !important;
+    background-color: rgb(253, 233, 233) !important;
+    box-shadow: 0 1px 1px rgba(185, 74, 72, 0.075) inset, 0 0 8px
+        rgba(82, 168, 236, 0.6) !important;
+}
