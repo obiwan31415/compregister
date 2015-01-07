@@ -13,12 +13,31 @@ h3.compreg {
 .regbox {
 	display: inline-table;
 	height: 50px;
-	/*width: 150px;*/
-	min-width:100px;
 	margin-right: 15px;
+}
+.fixed {
+    display: inline-table;
+    height: 50px;
+    width: 190px;
+    margin-right: 15px;
 }
 input {
     height: 15px;
+    width:150px; 
+}
+input#fixed {
+    margin-left: 10px;
+    display: inline-table;
+    vertical-align: text-top;
+}
+#fixedlabel {
+    display: inline-table;   
+}
+input:focus,textarea:focus {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px
+        rgba(56, 255, 0, 0.6) !important;
+        /*rgba(82, 168, 236, 0.6);*/
+    outline: 0 none;
 }
 input#email {
     display: inline-table;
@@ -56,7 +75,7 @@ input#btn_send:hover {
 }
 input.invalid {
     border-color: rgb(185, 74, 72) !important;
-    background-color: rgb(253, 233, 233) !important;
+    background-color: rgb(255, 240, 240) !important;
     box-shadow: 0 1px 1px rgba(185, 74, 72, 0.075) inset, 0 0 8px
-        rgba(82, 168, 236, 0.6) !important;
+        red !important;
 }
