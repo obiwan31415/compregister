@@ -7,10 +7,8 @@ class Computer {
 	private $email;
 	private $room;
 	private $fixedIP;
+	private $comment;
 
-	public function __construct() {
-		$this->fixedIP="no";
-	}
 	public function getMACaddress() {
 		return $this->macaddress;
 	}
@@ -29,8 +27,11 @@ class Computer {
 	public function getFixedIP(){
 		return $this->fixedIP;
 	}
-	public function setMACaddress($param) {
-		$this->macaddress = $param;
+	public function getComment(){
+		return $this->comment;
+	}
+	public function setMACaddress($mac) {
+		$this->macaddress = $this->convertToMAC($mac);	
 	}
 	public function setFirstname($firstname) {
 		$this->firstname=$firstname;
@@ -47,6 +48,19 @@ class Computer {
 	public function setFixedIP($fixedIP) {
 		$this->fixedIP=$fixedIP;
 	}
+	public function setComment($comment) {
+		$this->comment=$comment;
+	}
+	private function convertToMAC($input) {
+		$pattern="/^([0-9a-fA-F]{2}[:-]){5}([0-9a-fA-F]{2})$/";
+		if(preg_match($pattern,$input) == 1) {
+			$chars = explode("-", $input);
+		} else { //$pattern =  "/^[0-9a-fA-F]{12}$/"
+			$chars = str_split($input, 2);
+		}
+		$result = implode(":", $chars);
+		return strtolower($result);
+	}
 }
 
 class ModCompRegister {
@@ -58,15 +72,17 @@ class ModCompRegister {
 				`lastname`,
 				`email`,
 				`room`,
-				`fixedip`
+				`fixedip`,
+				`comment`
 				) 
 				VALUES ('"
 				.$computer->getMACaddress()		."', '"
 				.$computer->getFirstname()		."', '"
 				.$computer->getLastname()		."', '"
-				.$computer->getEmail()		."', '"
-				.$computer->getRoom()		."', '"
-				.$computer->getFixedIP()		."')"
+				.$computer->getEmail()			."', '"
+				.$computer->getRoom()			."', '"
+				.$computer->getFixedIP()		."', '"
+				.$computer->getComment()		."')"
 		;
 
 		$db->setQuery($query);
@@ -96,4 +112,6 @@ class ModCompRegister {
 		$mailer->send();
 	}
 }
+
+
 ?>

@@ -2,12 +2,8 @@
 defined('_JEXEC') or die('Access denied');
 $doc=JFactory::getDocument();
 $doc->addStyleSheet(JURI::root().'/modules/mod_compregister/css/mod_compregister.css');
-//$doc->addScript(JURI::root().'code/js/jquery-1.11.1.min.js');
-//$doc->addScript(JURI::root().'modules/mod_compregister/js/mod_compregister.js');
 $doc->addScript('modules/mod_compregister/js/mod_compregister.js');
 JHTML::_('behavior.formvalidation');
-
-
 ?>
 <form class="form-validate" id="compregister" name="compregister" method="POST" >
 	<h3 class="compreg">Adres MAC</h3>
@@ -36,8 +32,8 @@ JHTML::_('behavior.formvalidation');
 			<label for="email">Email id* :</label>
 			<input class="validate-username" type="text" id="email" name="email" />@ippt.pan.pl
 		</div>
-	<!-- <label for="comment">Uwagi:</label>
-	<textarea id="uwagi" name="comment" placeholder="Tu wpisz swoje uwagi."></textarea> -->
+	<label for="comment">Jeżeli zaznaczyłeś "Wymagany stały adress IP", podaj uzasadnienie. Możesz także wpisać inne uwagi.</label>
+	<textarea id="uwagi" name="comment" placeholder="Tu wpisz uzasadnienie lub inne uwagi..."></textarea>
 	<h3 class="compreg"></h3>
 
 	<?php echo JHtml::_('form.token'); ?>
