@@ -31,7 +31,7 @@ class Computer {
 		return $this->comment;
 	}
 	public function setMACaddress($mac) {
-		$this->macaddress = $this->convertToMAC($mac);	
+		$this->macaddress = $this->convertToMAC($mac);
 	}
 	public function setFirstname($firstname) {
 		$this->firstname=$firstname;
@@ -64,7 +64,7 @@ class Computer {
 }
 
 class ModCompRegister {
-	public static function saveData(Computer $computer, $params) {
+	public static function saveData($computer, $params) {
 		$db=JFactory::getDBO();
 		$query="INSERT INTO `#__comp_register`(
 				`macaddress`,
@@ -87,26 +87,50 @@ class ModCompRegister {
 
 		$db->setQuery($query);
 		if($db->query()) {
-			//self::sendEmailNotification($username,$useremail,$compname,$params);
 			return true;
 		}else{
 			return false;
 		}
 	}
 
+	public static function findMAC($mac) {
+		$db=JFactory::getDBO();
+		$query="SELECT COUNT(*) FROM `#__comp_register` WHERE macaddress = '$mac'";
+		$db->setQuery($query);
+		$count = $db->loadResult();
+		if($count==0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 	public static function sendEmailNotification($computer,$params) {
 		$mailer=JFactory::getMailer();
-		//$config=JFactory::getConfig();
+		$config=JFactory::getConfig();
 		$sender=array($params->get('sender_email'),$params->get('sender_name'));
 		$mailer->setSender($sender);
 		$mailer->addRecipient($params->get('receiver_email'));
-		$mailer->setSubject("New Contact Form Submitted");
-		$body="<h3>A new computer reqistration form was sent.</h3><br />";
-		$body.="MAC: ".$computer->getMACaddress()."<br>";
-		$body.="Fixed IP: ".$computer->getFixedIP()."<br>";
-		$body.="<span style=\"color:red;\">Username</span>:" 
-			.$computer->getLastname()." ".$computer->getFirstname()."<br>";
-		$body.="User Email: ".$computer->getEmail()."<br>";
+		$mailer->setSubject("Nowy formularz rejestracji komputera.");
+		
+		$body="<h3>Przysłano nowy formularz rejestracji:</h3><br />";
+		$body.="Czas rejestracji: ".date("Y-m-d H:i:s")."<br />";
+		$body.="Adres MAC: ".$computer->getMACaddress()."<br />";
+		$body.="Stały IP: ".$computer->getFixedIP()."<br />";
+		$body.="Użytkownik: ".$computer->getLastname()." ".$computer->getFirstname()."<br />";
+		$body.="Email użytkownika: ".$computer->getEmail()."@ippt.pan.pl<br />";
+		$body.="Miejsce podłączenia: pokój ".$computer->getRoom()."<br />";
+		$body.="Uwagi: ".$computer->getComment()."<br />";
+		$body.="<br />";
+		$body.="<h3>Wpis do <em>dhcp.conf:</em></h3><br />";
+		$body.="# ".date("d.m.Y")."; ".$computer->getFirstname()." ".$computer->getLastname()
+			."; p".$computer->getRoom()."<br />";
+		$body.="host "."komp".date("YmdHis")." { hardware ethernet ".$computer->getMACaddress();
+		if($computer->getFixedIP() == "yes") {
+			$body.="; fixed-address 0.0.0.0";
+		}
+		$body.="; }";
+
 		$mailer->setBody($body);
 		$mailer->isHTML(true);
 		$mailer->send();

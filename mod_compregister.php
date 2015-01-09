@@ -14,10 +14,16 @@ if(isset($_POST['btn_send'])) {
 	$computer->setEmail($jinput->get('email','','STRING'));
 	$computer->setRoom($jinput->get('room','','STRING'));
 	$computer->setComment($jinput->get('comment','','STRING'));
-	if(ModCompRegister::saveData($computer,$params)){
-		echo '<h3>Dane komputera zapisane</h3>';
+	if(ModCompRegister::findMAC($computer->getMACaddress())) {
+		echo '<h3 style="color:red;">BŁĄD! Taki adres MAC został wcześniej zarejestrowany.</h3>';
 	}else{
-		echo '<h3>BŁĄD! Spróbuj ponownie.</h3>';
+		if(ModCompRegister::saveData($computer,$params)){
+			//ModCompRegister::sendEmailNotification($computer,$params);
+			echo '<h3 style="color:#1A6E1B;">Dane komputera zapisane</h3><br />';
+			echo '<p style="color:#1A6E1B;">Oczekuj na maila z potwierdzeniem rejestracji.</p>';
+		}else{
+			echo '<h3 style="color:red;">BŁĄD! Spróbuj ponownie.</h3>';
+		}
 	}
 } else {
 	require(JModuleHelper::getLayoutPath('mod_compregister'));
