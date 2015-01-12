@@ -11,28 +11,28 @@ JHTML::_('behavior.formvalidation');
 		<input class="required validate-mac" type="text" id="macaddress" name="macaddress" />
 	</div>
 	<div class="fixed">
-		<label for="fixed" id="fixedlabel">Wymagany stały adres IP :</label>
+		<label for="fixed" id="fixedlabel">Stały adres IP (wymagane uzasadnienie) :</label>
 		<input type="checkbox" id="fixed" name="fixed" value="yes"/>
 	</div>
 
-	<h3 class="compreg">Dane osoby odpowiedzialnej za komputer</h3>
+	<h3 class="compreg">Dane osoby rejestrującej komputer lub urządzenie</h3>
 		<div class="regbox">
 			<label for="firstname">Imię* :</label>
-			<input class="validate-username" type="text" id="firstname" name="firstname" />
+			<input class="required validate-username" type="text" id="firstname" name="firstname" />
 		</div>
 		<div class="regbox">
 			<label for="lastname">Nazwisko* :</label>
-			<input class="validate-username" type="text" id="firstname" name="lastname" />
+			<input class="required validate-username" type="text" id="firstname" name="lastname" />
 		</div>
 		<div class="regbox">
 			<label for="room">Numer pokoju* :</label>
-			<input class="mandatory" type="text" id="room" name="room" />
+			<input class="required" type="text" id="room" name="room" />
 		</div>
 		<div class="regbox">
 			<label for="email">Email id* :</label>
-			<input class="validate-username" type="text" id="email" name="email" />@ippt.pan.pl
+			<input class="required validate-myemail" type="text" id="email" name="email" />@ippt.pan.pl
 		</div>
-	<label for="comment">Jeżeli zaznaczyłeś "Wymagany stały adress IP", podaj uzasadnienie. Możesz także wpisać inne uwagi.</label>
+	<label for="comment" id="labelcomment">Jeżeli zaznaczyłeś "Stały adres IP", podaj uzasadnienie. Możesz także wpisać inne uwagi.</label>
 	<textarea id="uwagi" name="comment" placeholder="Tu wpisz uzasadnienie lub inne uwagi..."></textarea>
 	<h3 class="compreg"></h3>
 

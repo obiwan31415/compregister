@@ -18,8 +18,8 @@ h3.compreg {
 .fixed {
     display: inline-table;
     height: 50px;
-    width: 190px;
-    margin-right: 15px;
+    width: 280px;
+    margin-right: 0px;
 }
 input {
     height: 15px;
@@ -46,6 +46,9 @@ input#email {
     width:100px;
     margin-right: 15px;
     clear: left;
+}
+label#labelcomment {
+    margin-top: 15px;
 }
 textarea#uwagi {
 	width: 98%;

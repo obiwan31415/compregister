@@ -123,13 +123,15 @@ class ModCompRegister {
 		$body.="Uwagi: ".$computer->getComment()."<br />";
 		$body.="<br />";
 		$body.="<h3>Wpis do <em>dhcp.conf:</em></h3><br />";
+		$body.="<br />";
 		$body.="# ".date("d.m.Y")."; ".$computer->getFirstname()." ".$computer->getLastname()
 			."; p".$computer->getRoom()."<br />";
 		$body.="host "."komp".date("YmdHis")." { hardware ethernet ".$computer->getMACaddress();
-		if($computer->getFixedIP() == "yes") {
+		/*if($computer->getFixedIP() == "yes") {
 			$body.="; fixed-address 0.0.0.0";
-		}
+		}*/
 		$body.="; }";
+		$body.="<br />";
 
 		$mailer->setBody($body);
 		$mailer->isHTML(true);

@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `f43gp_comp_register` (
+CREATE TABLE IF NOT EXISTS `#__comp_register` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `macaddress` varchar(17) NOT NULL,
   `firstname` varchar(25) NOT NULL,
