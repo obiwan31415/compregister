@@ -1,48 +1,35 @@
-label {
-	display: block;
+label, input{
+    display: block;
+}
+body#shadow {
+    line-height: 1.2em !important;
 }
 #titlemod {
-	font-size:16px;
-	color:green;
-	display:block;
+    font-size:16px;
+    color:green;
+    display:block;
 }
 h3.compreg {
-	color: green;
-	padding-top: 20px;
+    color: green;
 }
 .regbox {
-	display: inline-table;
-	height: 50px;
-	margin-right: 15px;
-}
-.fixed {
     display: inline-table;
     height: 50px;
-    width: 280px;
-    margin-right: 0px;
+    margin-right: 15px;
+}
+.macbox {
+    height: 40px;
 }
 input {
     height: 15px;
-    width:150px; 
-}
-input#fixed {
-    margin-left: 10px;
-    display: inline-table;
-    vertical-align: text-top;
-}
-#fixedlabel {
-    display: inline-table;   
+    width: 150px; 
 }
 input:focus,textarea:focus {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px
         rgba(56, 255, 0, 0.6) !important;
-        /*rgba(82, 168, 236, 0.6);*/
     outline: 0 none;
 }
 input#email {
-    display: inline-table;
-    height: 15px;
-    /*width: 150px;*/
     width:100px;
     margin-right: 15px;
     clear: left;
@@ -51,21 +38,18 @@ label#labelcomment {
     margin-top: 15px;
 }
 textarea#uwagi {
-	width: 98%;
-	height: 60px;
-	font-family: Tahoma, sans-serif;
-	/*background-color: #E0FBFF;*/
+    width: 98%;
+    height: 60px;
+    font-family: Tahoma, sans-serif;
 }
 input#btn_send {
     width: 40%;
     border: 3px solid #005c11;
     background: #DFFFAA;
-    margin-top: 20px;
+    margin-top: 0px;
     margin-left: 30%;
     margin-right: 30%;
-    padding: 15.5px 31px;
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
+    padding: 10px 31px;
     border-radius: 9px;
     color: #005c11;
     font-size: 19px;

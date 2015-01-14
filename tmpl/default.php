@@ -7,14 +7,9 @@ JHTML::_('behavior.formvalidation');
 ?>
 <form class="form-validate" id="compregister" name="compregister" method="POST" >
 	<h3 class="compreg">Adres MAC</h3>
-	<div class="regbox">
+	<div class="macbox">
 		<input class="required validate-mac" type="text" id="macaddress" name="macaddress" />
 	</div>
-	<div class="fixed">
-		<label for="fixed" id="fixedlabel">Stały adres IP (wymagane uzasadnienie) :</label>
-		<input type="checkbox" id="fixed" name="fixed" value="yes"/>
-	</div>
-
 	<h3 class="compreg">Dane osoby rejestrującej komputer lub urządzenie</h3>
 		<div class="regbox">
 			<label for="firstname">Imię* :</label>
@@ -22,7 +17,7 @@ JHTML::_('behavior.formvalidation');
 		</div>
 		<div class="regbox">
 			<label for="lastname">Nazwisko* :</label>
-			<input class="required validate-username" type="text" id="firstname" name="lastname" />
+			<input class="required validate-username" type="text" id="lastname" name="lastname" />
 		</div>
 		<div class="regbox">
 			<label for="room">Numer pokoju* :</label>
@@ -32,8 +27,8 @@ JHTML::_('behavior.formvalidation');
 			<label for="email">Email id* :</label>
 			<input class="required validate-myemail" type="text" id="email" name="email" />@ippt.pan.pl
 		</div>
-	<label for="comment" id="labelcomment">Jeżeli zaznaczyłeś "Stały adres IP", podaj uzasadnienie. Możesz także wpisać inne uwagi.</label>
-	<textarea id="uwagi" name="comment" placeholder="Tu wpisz uzasadnienie lub inne uwagi..."></textarea>
+	<label for="comment" id="labelcomment">UWAGI:</label>
+	<textarea id="uwagi" name="comment" placeholder="Tu wpisz swoje uwagi."></textarea>
 	<h3 class="compreg"></h3>
 
 	<?php echo JHtml::_('form.token'); ?>
