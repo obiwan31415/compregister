@@ -1,101 +1,27 @@
 <?php
 defined('_JEXEC') or die('Access denied');
 class Computer {
-	private $macaddress; //id
-	private $firstname;
-	private $lastname;
-	private $email;
-	private $room;
-	private $fixedIP;
-	private $comment;
-
-	public function getMACaddress() {
-		return $this->macaddress;
-	}
-	public function getFirstname(){
-		return $this->firstname;
-	}
-	public function getLastname(){
-		return $this->lastname;
-	}
-	public function getEmail(){
-		return $this->email;
-	}
-	public function getRoom(){
-		return $this->room;
-	}
-	public function getFixedIP(){
-		return $this->fixedIP;
-	}
-	public function getComment(){
-		return $this->comment;
-	}
-	public function setMACaddress($mac) {
-		$this->macaddress = $this->convertToMAC($mac);
-	}
-	public function setFirstname($firstname) {
-		$this->firstname=$firstname;
-	}
-	public function setLastname($lastname) {
-		$this->lastname=$lastname;
-	}
-	public function setEmail($email) {
-		$this->email=$email;
-	}
-	public function setRoom($room) {
-		$this->room=$room;
-	}
-	public function setFixedIP($fixedIP) {
-		$this->fixedIP=$fixedIP;
-	}
-	public function setComment($comment) {
-		$this->comment=$comment;
-	}
-	private function convertToMAC($input) {
-		$pattern="/^([0-9a-fA-F]{2}[:-]){5}([0-9a-fA-F]{2})$/";
-		if(preg_match($pattern,$input) == 1) {
-			$chars = explode("-", $input);
-		} else { //$pattern =  "/^[0-9a-fA-F]{12}$/"
-			$chars = str_split($input, 2);
-		}
-		$result = implode(":", $chars);
-		return strtolower($result);
-	}
+	public $macaddress; //id
+	public $firstname;
+	public $lastname;
+	public $email;
+	public $room;
+	public $fixedIP;
+	public $comment;
 }
 
 class ModCompRegister {
-	public static function saveData($computer, $params) {
-		$db=JFactory::getDBO();
-		$query="INSERT INTO `#__comp_register`(
-				`macaddress`,
-				`firstname`,
-				`lastname`,
-				`email`,
-				`room`,
-				`fixedip`,
-				`comment`
-				) 
-				VALUES ('"
-				.$computer->getMACaddress()		."', '"
-				.$computer->getFirstname()		."', '"
-				.$computer->getLastname()		."', '"
-				.$computer->getEmail()			."', '"
-				.$computer->getRoom()			."', '"
-				.$computer->getFixedIP()		."', '"
-				.$computer->getComment()		."')"
-		;
-
-		$db->setQuery($query);
-		if($db->query()) {
-			return true;
-		}else{
-			return false;
-		}
+	public static function saveData($computer) {
+		$result = JFactory::getDbo()->insertObject('#__comp_register', $computer);	
+		return $result;
 	}
 
 	public static function findMAC($mac) {
 		$db=JFactory::getDBO();
-		$query="SELECT COUNT(*) FROM `#__comp_register` WHERE macaddress = '$mac'";
+		$query = $db->getQuery(true);
+		$query->select('COUNT(*)')
+			->from($db->quoteName('#__comp_register'))
+			->where($db->quoteName('macaddress') . "=" . '"'.$mac.'"');
 		$db->setQuery($query);
 		$count = $db->loadResult();
 		if($count==0) {
@@ -103,6 +29,20 @@ class ModCompRegister {
 		} else {
 			return true;
 		}
+	}
+
+	public static function convertToMAC($input) {
+	    $pattern1="/^([0-9a-fA-F]{2}[-]){5}([0-9a-fA-F]{2})$/";
+	    $pattern2="/^([0-9a-fA-F]{2}[:]){5}([0-9a-fA-F]{2})$/";
+	    if(preg_match($pattern1,$input) == 1) {
+	        $chars = explode("-", $input);
+	    } else if(preg_match($pattern2,$input) == 1) {
+	        $chars = explode(":", $input);
+	    } else {                                //$pattern =  "/^[0-9a-fA-F]{12}$/"
+	        $chars = str_split($input, 2);
+	    }
+	    $result = implode(":", $chars);
+	    return strtolower($result);
 	}
 
 	public static function sendEmailNotification($computer,$params) {

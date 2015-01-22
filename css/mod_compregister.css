@@ -12,7 +12,7 @@ body#shadow {
 h3.compreg {
     color: green;
 }
-.regbox {
+div.regbox {
     display: inline-table;
     height: 50px;
     margin-right: 15px;
@@ -20,19 +20,21 @@ h3.compreg {
 .macbox {
     height: 40px;
 }
-input {
+input.regbox {
     height: 15px;
     width: 150px; 
+}
+input.regboxshort {
+    width:100px;
+    margin-right: 15px;
+}
+input#myemail {
+    clear: left;
 }
 input:focus,textarea:focus {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px
         rgba(56, 255, 0, 0.6) !important;
     outline: 0 none;
-}
-input#email {
-    width:100px;
-    margin-right: 15px;
-    clear: left;
 }
 label#labelcomment {
     margin-top: 15px;

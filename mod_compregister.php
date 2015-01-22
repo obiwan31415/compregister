@@ -5,16 +5,17 @@ $formpage=JURI::current();
 if(isset($_POST['btn_send'])) {
 	$jinput = JFactory::getApplication()->input;
 	$computer = new Computer();
-	$computer->setFixedIP($jinput->get('fixed','','STRING'));
-	if(!isset($_POST['fixed'])) {
+	//$computer->setFixedIP($jinput->get('fixed','','STRING'));
+	/*if(!isset($_POST['fixed'])) {
 		$computer->setFixedIP("no");
-	}
-	$computer->setMACaddress($jinput->get('macaddress','','STRING'));
-	$computer->setFirstname($jinput->get('firstname','','STRING'));
-	$computer->setLastname($jinput->get('lastname','','STRING'));
-	$computer->setEmail($jinput->get('email','','STRING'));
-	$computer->setRoom($jinput->get('room','','STRING'));
-	$computer->setComment($jinput->get('comment','','STRING'));
+	}*/
+	$computer->macaddress = ModCompRegister::convertToMAC($jinput->get('macaddress','','STRING'));
+	$computer->firstname = $jinput->get('firstname','','STRING');
+	$computer->lastname = $jinput->get('lastname','','STRING');
+	$computer->email = $jinput->get('email','','STRING');
+	$computer->room = $jinput->get('room','','STRING');
+	$computer->comment = $jinput->get('comment','','STRING');
+
 	if(ModCompRegister::findMAC($computer->getMACaddress())) {
 		echo '<h3 style="color:red;">BŁĄD! Taki adres MAC został wcześniej zarejestrowany.</h3>';
 		echo '<a href="'.$formpage.'">Powrót do formularza</a>';
