@@ -32,16 +32,16 @@ class ModCompRegister {
 	}
 
 	public static function convertToMAC($input) {
-	    $pattern1="/^([0-9a-fA-F]{2}[-]){5}([0-9a-fA-F]{2})$/";
-	    $pattern2="/^([0-9a-fA-F]{2}[:]){5}([0-9a-fA-F]{2})$/";
+	    $pattern1='/^([0-9a-fA-F]{2}[-]){5}([0-9a-fA-F]{2})$/';
+	    $pattern2='/^([0-9a-fA-F]{2}[:]){5}([0-9a-fA-F]{2})$/';
 	    if(preg_match($pattern1,$input) == 1) {
-	        $chars = explode("-", $input);
+	        $chars = explode('-', $input);
 	    } else if(preg_match($pattern2,$input) == 1) {
-	        $chars = explode(":", $input);
-	    } else {                                //$pattern =  "/^[0-9a-fA-F]{12}$/"
+	        $chars = explode(':', $input);
+	    } else {                                //$pattern =  '/^[0-9a-fA-F]{12}$/'
 	        $chars = str_split($input, 2);
 	    }
-	    $result = implode(":", $chars);
+	    $result = implode(':', $chars);
 	    return strtolower($result);
 	}
 
@@ -51,33 +51,27 @@ class ModCompRegister {
 		$sender=array($params->get('sender_email'),$params->get('sender_name'));
 		$mailer->setSender($sender);
 		$mailer->addRecipient($params->get('receiver_email'));
-		$mailer->setSubject("Nowy formularz rejestracji komputera.");
+		$mailer->setSubject('Nowy formularz rejestracji komputera.');
 		
-		$body="<h3>Przysłano nowy formularz rejestracji:</h3><br />";
-		$body.="Czas rejestracji: ".date("Y-m-d H:i:s")."<br />";
-		$body.="Adres MAC: ".$computer->getMACaddress()."<br />";
-		$body.="Stały IP: ".$computer->getFixedIP()."<br />";
-		$body.="Użytkownik: ".$computer->getLastname()." ".$computer->getFirstname()."<br />";
-		$body.="Email użytkownika: ".$computer->getEmail()."@ippt.pan.pl<br />";
-		$body.="Miejsce podłączenia: pokój ".$computer->getRoom()."<br />";
-		$body.="Uwagi: ".$computer->getComment()."<br />";
-		$body.="<br />";
-		$body.="<h3>Wpis do <em>dhcp.conf:</em></h3><br />";
-		$body.="<br />";
-		$body.="# ".date("d.m.Y")."; ".$computer->getFirstname()." ".$computer->getLastname()
-			."; p".$computer->getRoom()."<br />";
-		$body.="host "."komp".date("YmdHis")." { hardware ethernet ".$computer->getMACaddress();
-		/*if($computer->getFixedIP() == "yes") {
-			$body.="; fixed-address 0.0.0.0";
-		}*/
-		$body.="; }";
-		$body.="<br />";
+		$body='<h3>Przysłano nowy formularz rejestracji:</h3><br />';
+		$body.='Data rejestracji:    '.date('Y-m-d H:i:s').'<br />';
+		$body.='Adres MAC:           '.$computer->macaddress.'<br />';
+		//$body.='Stały IP:            '.$computer->fixedIP.'<br />';
+		$body.='Użytkownik:          '.$computer->lastname.' '.$computer->firstname.'<br />';
+		$body.='Email użytkownika:   '.$computer->email.'@ippt.pan.pl<br />';
+		$body.='Miejsce podłączenia: pokój '.$computer->room.'<br />';
+		$body.='Uwagi:               '.$computer->comment.'<br />';
+		$body.='<br />';
+		$body.='<h3>Wpis do <em>dhcp.conf:</em></h3><br />';
+		$body.='<br />';
+		$body.='# '.date('Y/m/d') . '; $computer->firstname $computer->lastname; p.$computer->room;<br />';
+		$body.='host '.'komp'.date('YmdHis').' { hardware ethernet $computer->macaddress';
+		$body.='; }';
+		$body.='<br />';
 
 		$mailer->setBody($body);
 		$mailer->isHTML(true);
 		$mailer->send();
 	}
 }
-
-
 ?>
