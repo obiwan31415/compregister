@@ -19,7 +19,7 @@ if(isset($_POST['btn_send'])) {
 		if(ModCompRegister::saveData($computer,$params)){
 			ModCompRegister::sendEmailNotification($computer,$params);
 			echo '<h3 style="color:#1A6E1B;">Dane komputera zapisane</h3><br />';
-			echo '<p style="color:#1A6E1B;">Oczekuj maila z potwierdzeniem rejestracji.</p>';
+			echo '<p style="color:#1A6E1B;">Oczekuj maila z potwierdzeniem rejestracji.</p>';			
 		}else{
 			echo '<h3 style="color:red;">BŁĄD! Spróbuj ponownie.</h3>';
 		}

@@ -1,7 +1,7 @@
 <?php
 defined('_JEXEC') or die('Access denied');
 $doc=JFactory::getDocument();
-$doc->addStyleSheet(JURI::root().'/modules/mod_compregister/css/mod_compregister.css');
+$doc->addStyleSheet(JURI::root().'modules/mod_compregister/css/mod_compregister.css');
 //$doc->addScript('modules/mod_compregister/js/mod_compregister.js');
 JHTML::_('behavior.formvalidation');
 ?>
